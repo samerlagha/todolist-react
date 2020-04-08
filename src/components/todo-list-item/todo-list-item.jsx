@@ -3,10 +3,10 @@ import React from 'react';
 import './todo-list-item.css';
 
 class TodoListItem extends React.Component{
-  state ={
-    done:false,
-    important:false
-  }
+  // state ={
+  //   done:false,
+  //   important:false
+  // }
   // constructor(props){
   //   super(props);
   //    this.state= {
@@ -14,23 +14,24 @@ class TodoListItem extends React.Component{
   //    }
   //   };
   // }
-onLabelClick =()=>{
-    this.setState(({done})=>{
+// onLabelClick =()=>{
+//     this.setState(({done})=>{
     
-      return{
-        done: !done
-      }
-    })};
-onMarkImportant = ()=>{
-   this.setState(({important})=>{
-     return {
-       important: !important
-     };
-   });
-};
+//       return{
+//         done: !done
+//       }
+//     })};
+// onMarkImportant = ()=>{
+//    this.setState(({important})=>{
+//      return {
+//        important: !important
+//      };
+//    });
+// };
   render(){
-    const { label, onDeleted } = this.props;
-    const {done,important} =this.state;
+    const { label, onDeleted,onToggleImportant,
+      onToggleDone ,important,done} = this.props;
+    // const {done,important} =this.state;
     let classNames='todo-list-item';
     if(done){
       classNames += ' done ';
@@ -43,7 +44,7 @@ onMarkImportant = ()=>{
         <span
           className="todo-list-item-label"
           
-           onClick={this.onLabelClick}
+           onClick={onToggleDone}
           >
           {label}
         </span>
@@ -51,7 +52,7 @@ onMarkImportant = ()=>{
         <button type="button"
                 className="btn btn-outline-success btn-sm float-right"
                 
-                onClick={this.onMarkImportant}
+                onClick={onToggleImportant}
                 >
           <i className="fa fa-exclamation" />
         </button>
